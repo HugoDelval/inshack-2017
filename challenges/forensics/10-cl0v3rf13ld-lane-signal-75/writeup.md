@@ -8,4 +8,7 @@ If you start do dissect the unknown file you will quickly find that it is a conc
 
 Just split the file in three files. Then listen to the OGG file and use the morse picture to decode it.
 
+The morse code used for this challenge is right [here](https://en.wikipedia.org/wiki/Morse_code#Letters.2C_numbers.2C_punctuation.2C_prosigns_for_Morse_code_and_non-English_variants). 
+Yes, morse code can be interpreted using various alphabets.
+
 You'll get the flag. 
