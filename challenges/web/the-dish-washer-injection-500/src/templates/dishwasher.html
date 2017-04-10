@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>DishWashers Manager</title>
+</head>
+<body>
+<a href="/">&#8592; Back home</a>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<h1>Another vulnerable dishwasher</h1>
+<p>Added by "<i>{{ added_by }}</i>". Thank you so much!</p>
+<ul>
+    <li>ID: {{ dishwasher.id }}</li>
+    <li>Name: {{ dishwasher.name }}</li>
+    <li>Brand: {{ dishwasher.brand }}</li>
+    <li>Cost: {{ dishwasher.cost }}€</li>
+    <li>CVE number: {{ dishwasher.cve }}</li>
+</ul>
+</body>
+</html>

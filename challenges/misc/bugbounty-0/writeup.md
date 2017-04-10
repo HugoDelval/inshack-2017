@@ -1,0 +1,1 @@
+If there are bugbounties during the CTF, writeups will be available in <b>../../bugbounty</b>

@@ -1,0 +1,107 @@
+{
+	"{D2B7-3227-4391-9CBB}":{
+		"name":"Smart TV",
+		"vendor":"NiceViewIoT",
+		"description":"This is a smart connected TV.",
+		"ds_format":"status:(on|off)",
+		"ds_rate":"on-event"
+	},
+	"{DD04-8129-477E-9FFB}":{
+		"name":"SmartLightBulb-Kitchen",
+		"vendor":"EnlIoTen",
+		"description":"Smart Bulb which can be controlled and programmed to be used on certain time of day",
+		"ds_format":"status:(on|off);schedule:<see_vendor_documentation>",
+		"ds_rate":"on-event"
+	},
+	"{D946-7276-440B-BB19}":{
+		"name":"SmartLightBulb-Garage",
+		"vendor":"EnlIoTen",
+		"description":"Smart Bulb which can be controlled and programmed to be used on certain time of day",
+		"ds_format":"status:(on|off);schedule:<see_vendor_documentation>",
+		"ds_rate":"on-event"
+	},
+	"{3FD8-D0F8-4EE4-946D}":{
+		"name":"SmartLightBulb-Livingroom",
+		"vendor":"EnlIoTen",
+		"description":"Smart Bulb which can be controlled and programmed to be used on certain time of day",
+		"ds_format":"status:(on|off);schedule:<see_vendor_documentation>",
+		"ds_rate":"on-event"
+	},
+	"{BF3F-C416-4289-AFBB}":{
+		"name":"SmartLightBulb-Bedroom-1",
+		"vendor":"EnlIoTen",
+		"description":"Smart Bulb which can be controlled and programmed to be used on certain time of day",
+		"ds_format":"status:(on|off);schedule:<see_vendor_documentation>",
+		"ds_rate":"on-event"
+	},
+	"{7442-FA69-48CC-8DA1}":{
+		"name":"SmartLightBulb-Bedroom-2",
+		"vendor":"EnlIoTen",
+		"description":"Smart Bulb which can be controlled and programmed to be used on certain time of day",
+		"ds_format":"status:(on|off);schedule:<see_vendor_documentation>",
+		"ds_rate":"on-event"
+	},
+	"{3AD5-B41B-471D-BC1A}":{
+		"name":"SmartLightBulb-Bedroom-2",
+		"vendor":"EnlIoTen",
+		"description":"Smart Bulb which can be controlled and programmed to be used on certain time of day",
+		"ds_format":"status:(on|off);schedule:<see_vendor_documentation>",
+		"ds_rate":"on-event"
+	},
+	"{05BB-C844-479B-812F}":{
+		"name":"PersonnalAssistant",
+		"vendor":"Hackssistant & Co.",
+		"description":"This assistant records everything you say and allow you (and others) to know your agenda",
+		"ds_format":"command:<see_vendor_documentation>",
+		"ds_rate":15
+	},
+	"{216B-87F8-4252-97D5}":{
+		"name":"Secure-Garden-Shed",
+		"vendor":"The SGS Company",
+		"description":"This is a secure garden shed lock created by The SGS Company to secure all your gardening tools",
+		"ds_format":"status:(open|closed|locked)",
+		"ds_rate":"on-event"
+	},
+	"{94C1-E389-4C7D-B2AA}":{
+		"name":"IntrusionDetectionSensor-Main-Door",
+		"vendor":"IDSensor & Co.",
+		"description":"This detector alerts if an intrusion is detected",
+		"ds_format":"status:(armed|disarmed);intrusion:(true|false)",
+		"ds_rate":"on-event"
+	},
+	"{8BB3-B78B-4A56-AE09}":{
+		"name":"IntrusionDetectionSensor-Kitchen-Window",
+		"vendor":"IDSensor & Co.",
+		"description":"This detector alerts if an intrusion is detected",
+		"ds_format":"status:(armed|disarmed);intrusion:(true|false)",
+		"ds_rate":"on-event"
+	},
+	"{271A-6015-4967-8E65}":{
+		"name":"IntrusionDetectionSensor-Roof-Window",
+		"vendor":"IDSensor & Co.",
+		"description":"This detector alerts if an intrusion is detected",
+		"ds_format":"status:(armed|disarmed);intrusion:(true|false)",
+		"ds_rate":"on-event"
+	},
+	"{3AC8-63C7-4CC0-AEAA}":{
+		"name":"IntrusionDetectionSensor-Garage-Door",
+		"vendor":"IDSensor & Co.",
+		"description":"This detector alerts if an intrusion is detected",
+		"ds_format":"status:(armed|disarmed);intrusion:(true|false)",
+		"ds_rate":"on-event"
+	},
+	"{7446-8FFD-4243-B5F1}":{
+		"name":"IntrusionDetectionSensor-Back-Door",
+		"vendor":"IDSensor & Co. & Mizter Hacker",
+		"description":"This detector does not alert owners if an intrusion is detected",
+		"ds_format":"status:(armed|disarmed);intrusion:false",
+		"ds_rate":15
+	},
+	"{653F-853E-498B-BE17}":{
+		"name":"FlagRaiserOne",
+		"vendor":"FlagRaiserIoT",
+		"description":"This thing sends status messages about flag raising system in front of the house",
+		"ds_format":"status_code:<code>",
+		"ds_rate":15
+	}
+}	

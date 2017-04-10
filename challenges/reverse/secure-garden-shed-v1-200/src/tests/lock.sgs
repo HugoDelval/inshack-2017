@@ -1,0 +1,45 @@
+#-------------------------------------------------------------------------------
+.options
+    
+#key:test
+
+#-------------------------------------------------------------------------------
+.vardecl
+
+tab char pass "thisisastrongpassphrasebecauseitisreallylongandrandomattheenduoiiencger"
+tab char flag "Well done! Here is your flag: INSA{Cust0m_15_N0t_S0_E4sy_t0_R3v3rs3_;)}"
+tab char fail "Sorry but the password you gave is wrong..."
+tab char next "Enter pasword ([a-z]):"
+char ci
+char cp
+int i 0
+bool continue true
+bool eof
+
+#-------------------------------------------------------------------------------
+.script
+
+echo next
+while continue
+    read ci -> eof
+    pass[i] -> cp
+    if ci == 0
+        if cp == 0
+            echo flag
+            exit 0
+        end
+        echo fail
+        exit 1
+    end
+    if cp == 0
+        echo fail
+        exit 1
+    end
+    if ci != cp
+        echo fail
+        exit 1    
+    end
+    i+1 -> i
+end
+echo fail
+exit 1

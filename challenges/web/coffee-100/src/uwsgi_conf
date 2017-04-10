@@ -1,0 +1,11 @@
+[uwsgi]
+socket=/tmp/coffee.sock 
+chmod-socket=666
+master=True
+enable-threads=True
+chdir=/var/run/coffee
+module=server:app
+uid=www-data
+gid=www-data
+plugins=python
+daemonize=/tmp/uwsgi_coffee.log

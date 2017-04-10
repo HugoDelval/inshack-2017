@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body>
+
+    <h1>Web rendering</h1>
+    <form>
+        <input type='url' id="filename" name="submit" />
+        <div class="g-recaptcha" data-sitekey="6LdDghgUAAAAABBAF93PLYjaejnZ7_gzoJFCrMZW"></div>
+        <input type="submit" id="submit" name="submit" />
+    </form>
+    <img src="" id="resultPicture" />
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+        $("form").submit(function(e) {
+            $.ajax({
+                url: '/screen',
+                type: 'POST',
+                success: function(data) {
+                    $("#resultPicture").attr("src", data.location);
+                },
+                data: {
+                    name: $("#filename").val(),
+                    captcha: grecaptcha.getResponse()
+                },
+            });
+            grecaptcha.reset();
+            e.preventDefault();
+        });
+    </script>
+</body>
+
+</html>

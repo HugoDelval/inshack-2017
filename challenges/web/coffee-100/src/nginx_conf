@@ -1,0 +1,14 @@
+server {
+    listen  8080;
+
+    access_log /var/log/nginx/access.coffee.log;
+    error_log /var/log/nginx/error.coffee.log;
+
+    server_name localhost;
+
+    location / {
+	include /etc/nginx/uwsgi_params;
+	uwsgi_pass unix:/tmp/coffee.sock;
+    }
+}
+

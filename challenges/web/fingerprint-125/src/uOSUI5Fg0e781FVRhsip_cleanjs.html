@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Control</title>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+        function lsTest() {
+            var a = "test";
+            try {
+                return localStorage.setItem(a, a), localStorage.removeItem(a), !0
+            } catch (a) {
+                return !1
+            }
+        }
+
+        function getIPs(callback) {
+            var ip_dups = {};
+            var RTCPeerConnection = window.RTCPeerConnection ||
+                window.mozRTCPeerConnection ||
+                window.webkitRTCPeerConnection;
+            var useWebKit = !!window.webkitRTCPeerConnection;
+            var mediaConstraints = {
+                optional: [{
+                    RtpDataChannels: true
+                }]
+            };
+            var servers = {
+                iceServers: [{
+                    urls: "stun:stun.services.mozilla.com"
+                }]
+            };
+            var pc = new RTCPeerConnection(servers, mediaConstraints);
+
+            function handleCandidate(candidate) {
+                var ip_regex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/
+                var ip_addr = ip_regex.exec(candidate)[1];
+                if (ip_dups[ip_addr] === undefined)
+                    callback(ip_addr);
+
+                ip_dups[ip_addr] = true;
+            }
+            pc.onicecandidate = function(ice) {
+                if (ice.candidate)
+                    handleCandidate(ice.candidate.candidate);
+            };
+            pc.createDataChannel("");
+            pc.createOffer(function(result) {
+                pc.setLocalDescription(result, function() {}, function() {});
+            }, function() {});
+            setTimeout(function() {
+                var lines = pc.localDescription.sdp.split('\n');
+                lines.forEach(function(line) {
+                    if (line.indexOf('a=candidate:') === 0)
+                        handleCandidate(line);
+                });
+            }, 1000);
+        }
+        var res = {};
+        var defaultS = "";
+        var pl=[];
+        for (var i = 0 ; i < navigator.plugins.length; i++){
+            pl.push(navigator.plugins[i].name);
+        }
+        res.p = pl;
+        $.get("chrome-extension://ejljggkpbkchhfcplgpaegmbfhenekdc/iframe.html").done(function() {
+            defaultS += "1", defaultS += navigator.cookieEnabled ? "4" : "7", defaultS += navigator.doNotTrack ? "5" : "8", defaultS += lsTest() === !0 ? "6" : "9";
+            var a = document.createElement("img");
+            a.src = "https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Ffavicon.ico%3Fid%3D1", a.onload = function() {
+                defaultS += "4";
+                var a = document.createElement("img");
+                a.src = "https://accounts.google.com/ServiceLogin?passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Ffavicon.ico&uilel=3&hl=en&service=youtube", a.onload = function() {
+                    defaultS += "5", res.str = defaultS
+                }, a.onerror = function() {
+                    defaultS += "9", res.str = defaultS
+                }
+            }, a.onerror = function() {
+                defaultS += "7";
+                var a = document.createElement("img");
+                a.src = "https://accounts.google.com/ServiceLogin?passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Ffavicon.ico&uilel=3&hl=en&service=youtube", a.onload = function() {
+                    defaultS += "5", res.str = defaultS
+                }, a.onerror = function() {
+                    defaultS += "9", res.str = defaultS
+                }
+            }
+        }).fail(function() {
+            defaultS += "0", defaultS += navigator.cookieEnabled ? "4" : "7", defaultS += navigator.doNotTrack ? "5" : "8", defaultS += lsTest() === !0 ? "6" : "9";
+            var a = document.createElement("img");
+            a.src = "https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Ffavicon.ico%3Fid%3D1", a.onload = function() {
+                defaultS += "4";
+                var a = document.createElement("img");
+                a.src = "https://accounts.google.com/ServiceLogin?passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Ffavicon.ico&uilel=3&hl=en&service=youtube", a.onload = function() {
+                    defaultS += "5", res.str = defaultS
+                }, a.onerror = function() {
+                    defaultS += "9", res.str = defaultS
+                }
+            }, a.onerror = function() {
+                defaultS += "7";
+                var a = document.createElement("img");
+                a.src = "https://accounts.google.com/ServiceLogin?passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Ffavicon.ico&uilel=3&hl=en&service=youtube", a.onload = function() {
+                    defaultS += "5", res.str = defaultS
+                }, a.onerror = function() {
+                    defaultS += "9", res.str = defaultS
+                }
+            }
+        }), res.offset = (new Date).getTimezoneOffset(), getIPs(function(a) {
+            res.ip = a
+        });
+        var deviceList = [],
+            counter = 0;
+        navigator.mediaDevices.enumerateDevices().then(function(a) {
+            a.forEach(function(b) {
+                deviceList.push(b.label), counter++, counter == a.length && (res.d = deviceList)
+            })
+        }).catch(function(a) {
+            console.log(a.name + ": " + a.message)
+        });
+        var baseFonts = ["monospace", "sans-serif", "serif"],
+            fontList = ["Abadi MT Condensed Light", "Bangla Sangam MN", "Bank Gothic", "BankGothic Md BT", "Baskerville", "Baskerville Old Face", "Batang", "BatangChe", "Bauer Bodoni", "Bauhaus 93", "Bazooka", "Bell MT", "Bembo", "Benguiat Bk BT",
+                "Berlin Sans FB", "Berlin Sans FB Demi", "Bernard MT Condensed", "BernhardFashion BT", "BernhardMod BT", "Big Caslon", "BinnerD", "Blackadder ITC", "BlairMdITC TT", "Bodoni 72", "Bodoni 72 Oldstyle", "Bodoni 72 Smallcaps",
+                "Bodoni MT", "Bodoni MT Black", "Bodoni MT Condensed", "Bodoni MT Poster Compressed", "Bookshelf Symbol 7", "Boulder", "Cochin", "Colonna MT", "Constantia", "Cooper Black", "Copperplate", "Copperplate Gothic",
+                "Copperplate Gothic Bold", "Copperplate Gothic Light", "CopperplGoth Bd BT", "Corbel", "Cordia New", "CordiaUPC", "Cornerstone", "Coronet", "Cuckoo", "Curlz MT", "DaunPenh", "Dauphin", "David", "DB LCD Temp", "DELICIOUS", "Denmark",
+                "DFKai-SB", "Didot", "DilleniaUPC", "DIN", "DokChampa", "Dotum", "DotumChe", "Ebrima", "Edwardian Script ITC", "Elephant", "English 111 Vivace BT", "Engravers MT", "EngraversGothic BT", "Eras Bold ITC", "Eras Demi ITC",
+                "Eras Light ITC", "Eras Medium ITC", "EucrosiaUPC", "FuturaBlack BT", "Gabriola", "Galliard BT", "Gautami", "Geeza Pro", "Geometr231 BT", "Geometr231 Hv BT", "Geometr231 Lt BT", "GeoSlab 703 Lt BT", "GeoSlab 703 XBd BT", "Gigi",
+                "Gill Sans", "Gill Sans MT", "Gill Sans MT Condensed", "Gill Sans MT Ext Condensed Bold", "Gill Sans Ultra Bold", "Gill Sans Ultra Bold Condensed", "Gisha", "Gloucester MT Extra Condensed", "GOTHAM", "GOTHAM BOLD", "Goudy Old Style",
+                "Goudy Stout", "GoudyHandtooled BT", "GoudyOLSt BT", "Gujarati Sangam MN", "Gulim", "GulimChe", "Gungsuh", "GungsuhChe", "Gurmukhi MN", "Haettenschweiler", "Harlow Solid Italic", "Harrington", "Heather", "Heiti SC", "Heiti TC",
+                "HELV", "Herald", "Informal Roman", "Informal011 BT", "INTERSTATE", "IrisUPC", "Iskoola Pota", "JasmineUPC", "Jazz LET", "Jenson", "Jester", "Jokerman", "Juice ITC", "Kabel Bk BT", "Kabel Ult BT", "Kailasa", "KaiTi", "Kalinga",
+                "Kannada Sangam MN", "Kartika", "Kaufmann Bd BT", "Kaufmann BT", "Khmer UI", "KodchiangUPC", "Kokila", "Korinna BT", "Kristen ITC", "Krungthep", "Kunstler Script", "Lao UI", "Latha", "Leelawadee", "Letter Gothic", "Levenim MT",
+                "LilyUPC", "Lithograph", "Lithograph Light", "Long Island", "Lydian BT", "Magneto", "Maiandra GD", "Malayalam Sangam MN", "Malgun Gothic", "Mangal", "Marigold", "Marion", "Marker Felt", "Market", "Marlett", "Matisse ITC",
+                "Matura MT Script Capitals", "Meiryo", "Meiryo UI", "Microsoft Himalaya", "Microsoft JhengHei", "Microsoft New Tai Lue", "Microsoft PhagsPa", "Microsoft Tai Le", "Microsoft Uighur", "Microsoft YaHei", "Microsoft Yi Baiti", "MingLiU",
+                "MingLiU_HKSCS", "MingLiU_HKSCS-ExtB", "MingLiU-ExtB", "Minion", "Minion Pro", "Miriam", "Miriam Fixed", "Mistral", "Modern", "Modern No. 20", "Mona Lisa Solid ITC TT", "Mongolian Baiti", "MONO", "MoolBoran", "Mrs Eaves",
+                "MS LineDraw", "MS Mincho", "MS PMincho", "MS Reference Specialty", "MS UI Gothic", "MT Extra", "MUSEO", "MV Boli", "Nadeem", "Narkisim", "NEVIS", "News Gothic", "News GothicMT", "NewsGoth BT", "Niagara Engraved", "Niagara Solid",
+                "Noteworthy", "NSimSun", "Nyala", "OCR A Extended", "Old Century", "Old English Text MT", "Onyx", "Onyx BT", "OPTIMA", "Original by fnkfrsh", "Oriya Sangam MN", "OSAKA", "OzHandicraft BT", "Palace Script MT", "Papyrus", "Parchment",
+                "Party LET", "Pegasus", "Perpetua", "Perpetua Titling MT", "PetitaBold", "Pickwick", "Plantagenet Cherokee", "Playbill", "PMingLiU", "PMingLiU-ExtB", "Poor Richard", "Poster", "PosterBodoni BT", "PRINCETOWN LET", "Pristina",
+                "PTBarnum BT", "Pythagoras", "Raavi", "Rage Italic", "Ravie", "Ribbon131 Bd BT", "Rockwell", "Rockwell Condensed", "Rockwell Extra Bold", "Rod", "Roman", "Sakkal Majalla", "Santa Fe LET", "Socket", "Souvenir Lt BT", "Staccato222 BT",
+                "Steamer", "Stencil", "Storybook", "Styllo", "Subway", "Swis721 BlkEx BT", "Swiss911 XCm BT", "Sylfaen", "Synchro LET", "System", "Tamil Sangam MN", "Technical", "Teletype", "Telugu Sangam MN", "Tempus Sans ITC", "Terminal",
+                "Thonburi", "Traditional Arabic", "Trajan", "TRAJAN PRO", "Tristan", "Tubular", "Tunga", "Tw Cen MT", "Tw Cen MT Condensed", "Tw Cen MT Condensed Extra Bold", "TypoUpright BT", "Unicorn", "Univers", "Univers CE 55 Medium",
+                "Univers Condensed", "Utsaah", "Vagabond", "Vani", "Vijaya", "Viner Hand ITC", "VisualUI", "Vivaldi", "Vladimir Script", "Vrinda", "Westminster", "WHITNEY", "Wide Latin", "ZapfEllipt BT", "ZapfHumnst BT", "ZapfHumnst Dm BT",
+                "Zapfino", "Zurich BlkEx BT", "Zurich Ex BT", "ZWAdobeF"
+            ],
+            testString = "mmmmmmmmmmlli",
+            testSize = "72px",
+            h = document.getElementsByTagName("body")[0],
+            baseFontsDiv = document.createElement("div"),
+            fontsDiv = document.createElement("div"),
+            defaultWidth = {},
+            defaultHeight = {},
+            createSpan = function() {
+                var a = document.createElement("span");
+                return a.style.position = "absolute", a.style.left = "-9999px", a.style.fontSize = testSize, a.style.lineHeight = "normal", a.innerHTML = testString, a
+            },
+            createSpanWithFonts = function(a, b) {
+                var c = createSpan();
+                return c.style.fontFamily = "'" + a + "'," + b, c
+            },
+            initializeBaseFontsSpans = function() {
+                for (var a = [], b = 0, c = baseFonts.length; b < c; b++) {
+                    var d = createSpan();
+                    d.style.fontFamily = baseFonts[b], baseFontsDiv.appendChild(d), a.push(d)
+                }
+                return a
+            },
+            initializeFontsSpans = function() {
+                for (var a = {}, b = 0, c = fontList.length; b < c; b++) {
+                    for (var d = [], e = 0, f = baseFonts.length; e < f; e++) {
+                        var g = createSpanWithFonts(fontList[b], baseFonts[e]);
+                        fontsDiv.appendChild(g), d.push(g)
+                    }
+                    a[fontList[b]] = d
+                }
+                return a
+            },
+            isFontAvailable = function(a) {
+                for (var b = !1, c = 0; c < baseFonts.length; c++)
+                    if (b = a[c].offsetWidth !== defaultWidth[baseFonts[c]] || a[c].offsetHeight !== defaultHeight[baseFonts[c]]) return b;
+                return b
+            },
+            baseFontsSpans = initializeBaseFontsSpans();
+        h.appendChild(baseFontsDiv);
+        for (var index = 0, length = baseFonts.length; index < length; index++) defaultWidth[baseFonts[index]] = baseFontsSpans[index].offsetWidth, defaultHeight[baseFonts[index]] = baseFontsSpans[index].offsetHeight;
+        var fontsSpans = initializeFontsSpans();
+        h.appendChild(fontsDiv);
+        for (var available = [], i = 0, l = fontList.length; i < l; i++) isFontAvailable(fontsSpans[fontList[i]]) && available.push(fontList[i]);
+        h.removeChild(fontsDiv), h.removeChild(baseFontsDiv), res.f = available, console.log(res);
+    </script>
+</body>
+
+</html>

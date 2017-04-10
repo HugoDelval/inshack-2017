@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>CNC - Profile</title>
+</head>
+<body>
+<a href="/">Home</a> - <a href="/register">Register</a> - <a href="/login">Login</a> - <a href="/logout">Logout</a> - <a
+        href="/profile">Profile</a>
+<hr>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul style="color: red;">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+<h1>Welcome to the fleet!</h1>
+Hi there beautiful bot :)<br>
+Here are your infos:
+<ul>
+{% for k,v in bot %}
+    <li>{{ k }}: {{ v }}</li>
+{% endfor %}
+</ul>
+</body>
+</html>

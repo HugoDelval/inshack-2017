@@ -1,0 +1,5 @@
+__pycache__/
+haproxy/__pycache__/
+*.pyc
+.idea/
+user.db

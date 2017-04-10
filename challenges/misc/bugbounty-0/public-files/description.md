@@ -1,0 +1,3 @@
+We are here to learn too. If you see a vulnerability in one of our challenge or in this website please alert an admin on telegram via the private chat (admin have a blue star next to their name).<br>
+You <b>won't have any point if you disrupt a service in any way</b> (so of course, it includes DoS). If you see a vulnerability which could disrupt the challenge, do not exploit it and alert an admin, we will work together on it. <br>
+Admins will determine the number of points (if any!) that you will receive. We will also communicate publicly on the vulnerability you found. Thanks a lot, and <b>play fair!</b>

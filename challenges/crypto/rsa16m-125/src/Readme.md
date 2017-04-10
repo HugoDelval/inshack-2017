@@ -1,0 +1,1 @@
+Un fichier statique et c'est tout !

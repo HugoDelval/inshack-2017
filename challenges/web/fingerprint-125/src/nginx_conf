@@ -1,0 +1,24 @@
+server {
+    listen 8081;
+    listen [::]:8081;
+    access_log /var/log/nginx/access.fingerprint.log;
+    error_log /var/log/nginx/error.fingerprint.log;
+
+    root /var/www/html;
+    index index.php index.html;
+
+    server_name fingerprint.insecurity-insa.fr;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}

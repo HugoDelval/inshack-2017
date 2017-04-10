@@ -1,0 +1,2 @@
+You have intercepted a communication in your office beetween one of your collegue and his coffee machine and you want a coffee with half whole milk and half creamed milk with raspberry flavor. <br>
+My coffee machine is installed here: <a href="https://coffee.insecurity-insa.fr" target="_blank">https://coffee.insecurity-insa.fr</a>.

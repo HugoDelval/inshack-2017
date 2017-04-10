@@ -1,0 +1,16 @@
+.content{
+  max-width: 600px;
+  margin: auto;
+  padding:20px;
+}
+
+H1{
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+#captcha{
+  display: block;
+  margin: auto;
+  padding-bottom: 20px;
+}

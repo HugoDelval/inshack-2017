@@ -1,0 +1,14 @@
+[uwsgi]
+socket=/tmp/dishwasher.sock
+chmod-socket=666
+master=True
+enable-threads=True
+processes = 3
+threads = 2
+chdir=/app
+module=src:app
+uid=dishwasher
+gid=dishwasher
+plugins=python3
+daemonize=/tmp/uwsgi_dishwasher.log
+harakiri = 3

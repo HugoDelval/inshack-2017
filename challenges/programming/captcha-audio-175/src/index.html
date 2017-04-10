@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+    <h1>My personal anti-bot software</h1>
+    <form action="submit" method="post">
+        <p> <audio id="audioLec" controls preload="none">
+  <source src="captcha" type="audio/wav">
+</audio> </p>
+        <p><label>Please type what you hear</label> : <input type="text" name="captcha" /></p>
+        <p>
+            Expected format : abcdefighijklmnopqrstuvwxyzabcdefighijklmnopqrstuvwxyz
+        </p>
+
+        <p><input type="submit" value="Anti-bot" /></p>
+    </form>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+        function makeid() {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for (var i = 0; i < 8; i++)
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+            return text;
+        }
+        $(function() {
+            $("#audioLec").attr("src", "captcha?id="+makeid());
+        });
+    </script>
+</body>
+<a href="/debug" style="display:none">test</a>
+
+</html>

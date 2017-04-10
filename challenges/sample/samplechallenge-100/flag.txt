@@ -1,0 +1,2 @@
+This file should contain only one line with the flag in this format:
+INSA{\w+}

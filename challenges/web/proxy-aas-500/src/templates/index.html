@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>Proxy as a service</title>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+<h1>Welcome to my Proxy AAS</h1>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul style="color: red;">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<p>I'm using this page to proxy my connections during the incoming french elections. Lately my server got blocked by my
+    hosting service! They said that my website was used as an anonymous proxy to do some illegal stuffs.</p>
+<p>Hopefully the bug is now fixed and you can't send too much data through my proxy. I wonder if there is another
+    vulnerability though...</p>
+
+<p>To use my service you have to provide:</p>
+<ul>
+    <li>
+        <b>(Required)</b> 2 IPs address + 2 ports. Those correspond to the 2 HTTP backends between which you want to
+        load balance
+    </li>
+    <li>
+        <b>(Optional)</b> An SSL certificate if you need to enable HTTPs connection.
+    </li>
+    <li>
+        <b>(Optional)</b> Some custom HTTP headers (eg. for authentication/authorization)
+    </li>
+</ul>
+<form action="/" method="post">
+    <fieldset>
+        <label for="ip_backend1">* IP backend 1: </label> <input type="text" id="ip_backend1" name="ip_backend1" autofocus
+                                                                 required> <br>
+        <label for="port_backend1">* PORT backend 1: </label> <input type="number" id="port_backend1" name="port_backend1"
+                                                                     required> <br>
+        <label for="ip_backend2">* IP backend 2: </label> <input type="text" id="ip_backend2" name="ip_backend2" required>
+        <br>
+        <label for="port_backend2">* PORT backend 2: </label> <input type="number" id="port_backend2" name="port_backend2"
+                                                                     required> <br>
+        <label for="ssl_cert">SSL certificate: </label> <textarea id="ssl_cert" name="ssl_cert"></textarea> <br>
+        <label for="ssl_key">SSL private key: </label> <textarea id="ssl_key" name="ssl_key"></textarea> <br>
+        <label for="http_headers">Custom HTTP Headers: </label> <input style="width: 600px" type="text" id="http_headers" name="http_headers" placeholder="'Header1 Header1Value;Header2 Header2Value;Header3 Header3Value;...'"> <br>
+        <div class="g-recaptcha" data-sitekey="6LfEJBsUAAAAAIelz5IVyvgO6gFxQe5qWpNHBTq6"></div>
+        <input type="submit" value="Launch!"> <br>
+    </fieldset>
+</form>
+</body>
+</html>

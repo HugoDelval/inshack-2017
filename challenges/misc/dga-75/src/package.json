@@ -1,0 +1,19 @@
+{
+  "name": "dga",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "request": "^2.81.0",
+    "uuid": "^3.0.1",
+    "valid-url": "^1.0.9",
+    "webshot": "^0.18.0"
+  }
+}

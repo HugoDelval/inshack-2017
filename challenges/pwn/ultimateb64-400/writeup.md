@@ -1,0 +1,1 @@
+This is a format string vulnerability where you have to write your shell into the stack the jump on it. CF *exploit/exploit.py* for more details

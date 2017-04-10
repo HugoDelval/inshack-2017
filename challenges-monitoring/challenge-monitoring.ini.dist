@@ -1,0 +1,5 @@
+[authentication]
+; add a username here
+username=
+; add a passphrase here, a strong one ;)
+passphrase=

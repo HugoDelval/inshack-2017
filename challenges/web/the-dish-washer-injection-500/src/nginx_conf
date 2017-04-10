@@ -1,0 +1,13 @@
+server {
+    listen  8080;
+
+    access_log /var/log/nginx/access.dishwasher.log;
+    error_log /var/log/nginx/error.dishwasher.log;
+
+    server_name localhost;
+
+    location / {
+    include /etc/nginx/uwsgi_params;
+        uwsgi_pass unix:/tmp/dishwasher.sock;
+    }
+}

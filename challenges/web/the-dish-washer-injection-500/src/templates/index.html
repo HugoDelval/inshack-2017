@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Welcome to a better kitchen world!</title>
+</head>
+<body>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<h1>You can add your new vulnerable dishwasher here</h1>
+<form action="/add_dishwasher" method="post">
+    <label for="name">Name: </label><input type="text" name="name" value="PG 8528" required><br>
+    <label for="brand">Brand: </label><input type="text" name="brand" value="Miele Professional" required><br>
+    <label for="cost">Cost: </label><input type="number" name="cost" value="10000" required><br>
+    <label for="cve">CVE: </label><input type="text" name="cve" value="CVE-2017-7240" required><br>
+    <input type="submit" value="Add">
+</form>
+</body>
+</html>
